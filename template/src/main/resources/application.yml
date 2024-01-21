@@ -1,1 +1,35 @@
+spring:
 
+  ## H2 DataBase
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    hikari:
+      maximum-pool-size: 40
+
+  ## JPA
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+  #    show-sql: true
+
+  ## Swagger 3.0
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+## JWT
+jwt:
+  secret: "ohjuhyeonspringtemplate"
+  token:
+    refresh-expires: 1200000 # 20분
+    access-expires: 600000 # 10분
+
+## Encrypt
+encrypt:
+  key: "templatetestohju" # 16byte
