@@ -18,11 +18,6 @@ spring:
         format_sql: true
   #    show-sql: true
 
-  ## Swagger 3.0
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-
 ## JWT
 jwt:
   secret: "ohjuhyeonspringtemplate"
