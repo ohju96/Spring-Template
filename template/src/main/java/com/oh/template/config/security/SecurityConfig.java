@@ -13,11 +13,26 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+
+    private final String[] SWAGGER = {
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/swagger-config"
+    };
+
+    private final String[] AUTH = {
+            "/api/v1/auth/**",
+            "/healthcheck"
+    };
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,19 +50,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) ->
                         auth
-                                .requestMatchers(
-                                        "/swagger-ui/**",
-                                        "/v3/api-docs/**",
-                                        "/swagger-resources/**",
-                                        "/swagger-ui/**",
-                                        "/v3/api-docs/swagger-config"
-                                ).permitAll()
-
-                                .requestMatchers(
-                                        "/api/v1/auth/**",
-                                        "/healthcheck"
-                                ).permitAll()
+                                .requestMatchers(SWAGGER).permitAll()
+                                .requestMatchers(AUTH).permitAll()
                 )
+                .sessionManagement((session) -> session.sessionCreationPolicy(STATELESS))
                 .build();
     }
 }
