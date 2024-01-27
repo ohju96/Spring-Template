@@ -1,4 +1,4 @@
-package com.oh.template;
+package com.oh.template.app.common.ui;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
