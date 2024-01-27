@@ -20,7 +20,7 @@ spring:
 
 ## JWT
 jwt:
-  secret: "ohjuhyeonspringtemplate"
+  secret: "ohjuhyeonspringtemplate123test21e13dweefwfw"
   token:
     refresh-expires: 1200000 # 20분
     access-expires: 600000 # 10분
