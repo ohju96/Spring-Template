@@ -1,6 +1,7 @@
-package com.oh.template.config.jwt;
+package com.oh.template.config.jwt.impl;
 
 import com.oh.template.app.member.command.domain.Role;
+import com.oh.template.config.jwt.AuthToken;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.impl.DefaultClaims;
 import lombok.AllArgsConstructor;

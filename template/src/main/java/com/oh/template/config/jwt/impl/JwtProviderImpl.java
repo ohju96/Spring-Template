@@ -1,6 +1,7 @@
-package com.oh.template.config.jwt;
+package com.oh.template.config.jwt.impl;
 
 import com.oh.template.app.member.command.domain.Role;
+import com.oh.template.config.jwt.JwtProvider;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.io.Decoders;
@@ -20,8 +21,8 @@ import java.security.Key;
 import java.util.*;
 
 import static com.oh.template.config.jwt.AuthToken.AUTHORITIES_TOKEN_KEY;
-import static com.oh.template.config.jwt.UserContents.ACCESS_TOKEN_TYPE_VALUE;
-import static com.oh.template.config.jwt.UserContents.REFRESH_TOKEN_TYPE_VALUE;
+import static com.oh.template.config.jwt.MemberConstants.ACCESS_TOKEN_TYPE_VALUE;
+import static com.oh.template.config.jwt.MemberConstants.REFRESH_TOKEN_TYPE_VALUE;
 
 @Component
 @RequiredArgsConstructor

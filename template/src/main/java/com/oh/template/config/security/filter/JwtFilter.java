@@ -1,5 +1,7 @@
-package com.oh.template.config.jwt;
+package com.oh.template.config.security.filter;
 
+import com.oh.template.config.jwt.impl.AuthTokenImpl;
+import com.oh.template.config.jwt.impl.JwtProviderImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Optional;
 
-import static com.oh.template.config.jwt.UserContents.AUTHORIZATION_TOKEN_KEY;
+import static com.oh.template.config.jwt.MemberConstants.AUTHORIZATION_TOKEN_KEY;
 
 @Component
 @RequiredArgsConstructor
