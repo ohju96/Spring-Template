@@ -9,7 +9,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 public class CustomResponseUtils {
 
-public static <T> CustomResponse<T> success(T data) {
+public static <T> CustomResponse<T> success (T data) {
         return new CustomResponse<>(SUCCESS.getResult(), SUCCESS.getMessage(), data);
     }
 
