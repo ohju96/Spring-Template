@@ -23,6 +23,15 @@ public enum ExceptionEnum {
     MISSING_BODY(HttpStatus.BAD_REQUEST, "code-0008", "missing body"),
     RUNTIME_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "code-0009", "runtime exception"),
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "code-0010", "bad request"),
+
+    /**
+     * 1000 ~ 1999 : Member Exception
+     */
+    INVALID_PROVIDER(HttpStatus.BAD_REQUEST, "code-1001", "invalid provider"),
+    ALREADY_EXIST_EMAIL(HttpStatus.BAD_REQUEST, "code-1002", "already exist email"),
+    ALREADY_EXIST_NICKNAME(HttpStatus.BAD_REQUEST, "code-1003", "already exist nickname"),
+    ALREADY_EXIST_PROVIDER_ID(HttpStatus.BAD_REQUEST, "code-1004", "already exist provider id"),
+    ALREADY_EXIST_MEMBER(HttpStatus.BAD_REQUEST, "code-1005", "already exist member"),
     ;
 
     private final HttpStatus status;
