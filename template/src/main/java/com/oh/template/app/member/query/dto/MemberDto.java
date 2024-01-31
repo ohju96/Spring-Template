@@ -5,11 +5,7 @@ import com.oh.template.app.member.command.domain.Provider;
 import com.oh.template.app.member.command.domain.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
 
-@Getter
-@ToString
 @Builder
 @Schema(name = "MemberDto", description = "멤버 DTO")
 public record MemberDto (
@@ -40,14 +36,14 @@ public record MemberDto (
 ) {
     public static Member toEntity(MemberDto memberDto) {
         return Member.builder()
-                .id(memberDto.getId())
-                .email(memberDto.getEmail())
-                .providerId(memberDto.getProviderId())
-                .provider(memberDto.getProvider())
-                .nickname(memberDto.getNickname())
-                .name(memberDto.getName())
-                .password(memberDto.getPassword())
-                .role(memberDto.getRole())
+                .id(memberDto.id())
+                .email(memberDto.email())
+                .providerId(memberDto.providerId())
+                .provider(memberDto.provider())
+                .nickname(memberDto.nickname())
+                .name(memberDto.name())
+                .password(memberDto.password())
+                .role(memberDto.role())
                 .build();
     }
 
