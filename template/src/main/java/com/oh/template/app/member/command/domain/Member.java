@@ -1,5 +1,6 @@
 package com.oh.template.app.member.command.domain;
 
+import com.oh.template.app.common.command.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import static lombok.AccessLevel.*;
 @NoArgsConstructor(access = PROTECTED)
 @Table(name = "member")
 @Entity
-public class Member {
+public class Member extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;
