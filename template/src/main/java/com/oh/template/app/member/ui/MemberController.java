@@ -1,6 +1,7 @@
 package com.oh.template.app.member.ui;
 
 import com.oh.template.app.common.query.response.CustomResponseUtils;
+import com.oh.template.app.common.ui.ControllerSupport;
 import com.oh.template.app.member.command.application.MemberService;
 import com.oh.template.app.member.command.application.request.SignupRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import static com.oh.template.app.common.query.response.CustomResponseUtils.Cust
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/members")
-public class MemberController {
+public class MemberController extends ControllerSupport {
 
     private final MemberService memberService;
 
