@@ -2,14 +2,18 @@ package com.oh.template.app.member.infra;
 
 import com.oh.template.app.common.exception.CustomException;
 import com.oh.template.app.member.command.application.MemberService;
+import com.oh.template.app.member.command.application.request.KakaoSignupRequest;
 import com.oh.template.app.member.command.application.request.SignupRequest;
 import com.oh.template.app.member.command.domain.Member;
 import com.oh.template.app.member.command.domain.Role;
 import com.oh.template.app.member.query.dto.MemberDto;
+import com.oh.template.app.member.query.response.KakaoSignupResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import static com.oh.template.app.common.exception.ExceptionEnum.*;
 
@@ -61,8 +65,41 @@ public class MemberServiceImpl implements MemberService {
      * 카카오로 회원가입하기
      * @param memberDto 멤버 DTO
      */
-    private void signupKakao(MemberDto memberDto) {
+    private KakaoSignupResponse signupKakao(MemberDto memberDto) {
 
+        // 스크랩 요청 객체 생성
+        KakaoSignupRequest kakaoSignupRequest = KakaoSignupRequest.of(
+                memberDto.email(),
+                memberDto.providerId(),
+                memberDto.nickname(),
+                memberDto.name(),
+                memberDto.password()
+        );
+
+        // Base URL
+        String reqBaseUrl = "https://kakao.com";
+
+        // 웹 클라이언트 생성
+        WebClient client = WebClient.builder()
+                .baseUrl(reqBaseUrl)
+                .build();
+
+        // URI
+        String reqUri = "/v2/signup";
+
+        ResponseEntity<KakaoSignupResponse> result = client.post()
+                .uri(reqUri)
+                .bodyValue(kakaoSignupRequest)
+                .retrieve()
+                .toEntity(KakaoSignupResponse.class)
+                .block();
+
+        // 실패시 예외 발생
+        if (result == null || result.getStatusCode().isError()) {
+            throw new CustomException(FAILED_TO_WEBCLIENT_REQUEST);
+        }
+
+        return result.getBody();
     }
 
     /**
