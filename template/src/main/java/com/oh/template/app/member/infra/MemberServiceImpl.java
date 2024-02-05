@@ -77,7 +77,7 @@ public class MemberServiceImpl implements MemberService {
         );
 
         // Base URL
-        String reqBaseUrl = "https://kakao.com";
+        String reqBaseUrl = "https://kauth.kakao.com";
 
         // 웹 클라이언트 생성
         WebClient client = WebClient.builder()
@@ -85,7 +85,7 @@ public class MemberServiceImpl implements MemberService {
                 .build();
 
         // URI
-        String reqUri = "/v2/signup";
+        String reqUri = "/oauth/authorize";
 
         ResponseEntity<KakaoSignupResponse> result = client.post()
                 .uri(reqUri)
