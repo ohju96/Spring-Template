@@ -1,5 +1,7 @@
 package com.oh.template.app.member.command.domain;
 
+import java.util.Optional;
+
 public interface MemberRepository {
 
     /**
@@ -22,5 +24,7 @@ public interface MemberRepository {
      * @return 멤버 존재 여부 - true: 존재, false: 미존재
      */
     boolean existsByProviderId(Member req);
+
+    Member save(Member req);
 
 }

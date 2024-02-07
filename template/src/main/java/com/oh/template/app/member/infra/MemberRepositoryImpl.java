@@ -54,4 +54,9 @@ public class MemberRepositoryImpl extends QuerydslRepositorySupport implements M
                 .fetchFirst();
         return fetch != null; // 1개라도 있으면 true
     }
+
+    @Override
+    public Member save(Member req) {
+        return memberJPARepository.save(req);
+    }
 }
